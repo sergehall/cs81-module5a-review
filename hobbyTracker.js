@@ -33,6 +33,13 @@ function longSessions(log, minMinutes) {
   // filter() is a higher-order function that returns a subset of the array
 }
 
+// This function filters entries where a numeric field is greater than a given threshold
+// Improvement: made the function reusable for any numeric field, not just 'minutes'
+function filterByGreaterThan(log, field, threshold) {
+  return log.filter(entry => entry[field] > threshold);
+  // Example: filterByGreaterThan(log, "minutes", 30)
+}
+
 // This function counts how many sessions had a specific mood
 function countMood(log, moodType) {
   // Filters the log by matching mood, then returns the length of the filtered array
@@ -47,6 +54,17 @@ console.log("Total time spent:", totalTime(hobbyLog), "minutes");
 
 console.log("Unique hobbies:", uniqueHobbies(hobbyLog));
 // Expected output: Unique hobbies: [ 'drawing', 'reading', 'gaming' ]
+// Shows a deduplicated list of all hobbies recorded in the log
+
+console.log("Sessions longer than 30 min:", filterByGreaterThan(hobbyLog, "minutes", 30));
+// Filters and displays only the sessions where the time spent was more than 30 minutes
+
+// This line is incorrect: "hobby".length always equals 5, not per entry
+// It should be written with a map/filter combo or by accessing entry.hobby.length inside a filter
+console.log("Days with long hobby names:", filterByGreaterThan(hobbyLog, "hobby".length, 6));
+// Incorrect usage — this compares a fixed value "hobby".length (which is always 5), not per entry
+
+
 
 console.log("Sessions longer than 30 min:", longSessions(hobbyLog, 30));
 // Expected output: Sessions longer than 30 min: [ { ... }, { ... } ]
