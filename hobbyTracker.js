@@ -7,6 +7,7 @@ const hobbyLog = [
   { day: "Friday", hobby: "reading", minutes: 35, mood: "calm" }
 ];
 
+
 // This function calculates the total amount of time spent on all hobbies
 // Suggestion: rename to getTotalTimeSpent for clarity and reusability
 // Even better: make it reusable for summing any numeric property
@@ -14,8 +15,6 @@ function getTotal(log, field) {
   return log.reduce((sum, session) => sum + session[field], 0);
 }
 
-// Replacing old function call with the new one
-console.log("Total time spent:", getTotal(hobbyLog, "minutes"), "minutes");
 
 // This function returns an array of unique hobby names
 function uniqueHobbies(log) {
@@ -49,8 +48,8 @@ function countMood(log, moodType) {
 
 // Console logs for testing and demo purposes:
 
-console.log("Total time spent:", totalTime(hobbyLog), "minutes");
-// Expected output: Total time spent: 155 minutes
+// Replacing old function call with the new one
+console.log("Total time spent:", getTotal(hobbyLog, "minutes"), "minutes");
 
 console.log("Unique hobbies:", uniqueHobbies(hobbyLog));
 // Expected output: Unique hobbies: [ 'drawing', 'reading', 'gaming' ]
