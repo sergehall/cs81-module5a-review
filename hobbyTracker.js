@@ -8,12 +8,14 @@ const hobbyLog = [
 ];
 
 // This function calculates the total amount of time spent on all hobbies
-function totalTime(log) {
-  // Uses reduce to accumulate the total minutes from each session
-  return log.reduce((sum, session) => sum + session.minutes, 0);
-  // sum: accumulator, session: current item from log
-  // Returns total number (e.g. 155)
+// Suggestion: rename to getTotalTimeSpent for clarity and reusability
+// Even better: make it reusable for summing any numeric property
+function getTotal(log, field) {
+  return log.reduce((sum, session) => sum + session[field], 0);
 }
+
+// Replacing old function call with the new one
+console.log("Total time spent:", getTotal(hobbyLog, "minutes"), "minutes");
 
 // This function returns an array of unique hobby names
 function uniqueHobbies(log) {
